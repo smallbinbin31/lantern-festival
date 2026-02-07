@@ -1,0 +1,100 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600">
+  <defs>
+    <style>
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      @keyframes swing {
+        0%, 100% { transform: rotate(-3deg); }
+        50% { transform: rotate(3deg); }
+      }
+      @keyframes glow {
+        0%, 100% { opacity: 0.15; }
+        50% { opacity: 0.35; }
+      }
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.1); opacity: 1; }
+      }
+      .star { animation: twinkle 3s ease-in-out infinite; }
+      .star:nth-child(2) { animation-delay: 0.5s; }
+      .star:nth-child(3) { animation-delay: 1s; }
+      .star:nth-child(4) { animation-delay: 1.5s; }
+      .star:nth-child(5) { animation-delay: 2s; }
+      .star:nth-child(6) { animation-delay: 2.5s; }
+      .lantern-left { transform-origin: 200px 150px; animation: swing 4s ease-in-out infinite; }
+      .lantern-right { transform-origin: 1000px 160px; animation: swing 3.5s ease-in-out infinite 0.5s; }
+      .glow { animation: glow 2s ease-in-out infinite; }
+      .moon { animation: pulse 6s ease-in-out infinite; }
+      .guanyin { animation: float 5s ease-in-out infinite; }
+      .halo { animation: pulse 4s ease-in-out infinite; }
+    </style>
+  </defs>
+  
+  <rect width="1200" height="600" fill="#1a237e"/>
+  
+  <!-- Stars -->
+  <circle class="star" cx="120" cy="90" r="2" fill="white"/>
+  <circle class="star" cx="250" cy="120" r="2" fill="white"/>
+  <circle class="star" cx="950" cy="70" r="2" fill="white"/>
+  <circle class="star" cx="1100" cy="85" r="2" fill="white"/>
+  <circle class="star" cx="150" cy="480" r="1.5" fill="white"/>
+  <circle class="star" cx="1000" cy="500" r="2" fill="white"/>
+  
+  <!-- Moon -->
+  <circle class="moon" cx="1050" cy="120" r="45" fill="#fff9c4" opacity="0.8"/>
+  
+  <!-- Guanyin Halo -->
+  <ellipse class="halo" cx="600" cy="380" rx="100" ry="120" fill="white" opacity="0.2"/>
+  
+  <!-- Guanyin -->
+  <g class="guanyin">
+    <circle cx="600" cy="220" r="50" fill="#ffe4c4" stroke="#d4a574" stroke-width="3"/>
+    <ellipse cx="590" cy="215" rx="5" ry="8" fill="#654321"/>
+    <ellipse cx="610" cy="215" rx="5" ry="8" fill="#654321"/>
+    <path d="M 585 235 Q 600 242 615 235" stroke="#8b4513" stroke-width="2" fill="none"/>
+    <circle cx="600" cy="245" r="3" fill="#ff69b4"/>
+    <circle cx="600" cy="245" r="6" fill="none" stroke="#ff69b4" stroke-width="1"/>
+    <ellipse cx="600" cy="180" rx="58" ry="35" fill="#1a237e" stroke="#ffd700" stroke-width="3"/>
+    <circle cx="570" cy="170" r="8" fill="#ffd700"/>
+    <circle cx="600" cy="165" r="10" fill="#ffd700"/>
+    <circle cx="630" cy="170" r="8" fill="#ffd700"/>
+    <ellipse cx="600" cy="290" rx="70" ry="90" fill="#ffffff" stroke="#d4a574" stroke-width="3"/>
+    <rect x="535" y="270" width="130" height="100" fill="#87ceeb" stroke="#4682b4" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="550" cy="330" rx="20" ry="35" fill="#ffe4c4" stroke="#d4a574" stroke-width="2"/>
+    <ellipse cx="650" cy="330" rx="20" ry="35" fill="#ffe4c4" stroke="#d4a574" stroke-width="2"/>
+    <path d="M 570 360 Q 600 375 630 360" stroke="#d4a574" stroke-width="3" fill="none"/>
+    <ellipse cx="600" cy="430" rx="50" ry="30" fill="#87ceeb" opacity="0.7"/>
+    <circle cx="600" cy="440" r="15" fill="#ffd700" opacity="0.8"/>
+  </g>
+  
+  <!-- Left Lantern -->
+  <g class="lantern-left">
+    <line x1="200" y1="150" x2="200" y2="180" stroke="#ffd700" stroke-width="2"/>
+    <ellipse cx="200" cy="210" rx="35" ry="50" fill="#ff6b6b" stroke="#8b0000" stroke-width="2"/>
+    <rect x="170" y="195" width="60" height="10" fill="#ffd700"/>
+    <rect x="170" y="225" width="60" height="10" fill="#ffd700"/>
+    <text x="200" y="217" text-anchor="middle" font-size="20" fill="#ffd700" font-weight="bold">福</text>
+    <circle cx="200" cy="265" r="5" fill="#ffd700"/>
+    <ellipse class="glow" cx="200" cy="210" rx="48" ry="65" fill="yellow" opacity="0.15"/>
+  </g>
+  
+  <!-- Right Lantern -->
+  <g class="lantern-right">
+    <line x1="1000" y1="160" x2="1000" y2="190" stroke="#ffd700" stroke-width="2"/>
+    <ellipse cx="1000" cy="220" rx="35" ry="50" fill="#ff6b6b" stroke="#8b0000" stroke-width="2"/>
+    <rect x="970" y="205" width="60" height="10" fill="#ffd700"/>
+    <rect x="970" y="235" width="60" height="10" fill="#ffd700"/>
+    <text x="1000" y="227" text-anchor="middle" font-size="20" fill="#ffd700" font-weight="bold">慶</text>
+    <circle cx="1000" cy="275" r="5" fill="#ffd700"/>
+    <ellipse class="glow" cx="1000" cy="220" rx="48" ry="65" fill="yellow" opacity="0.15"/>
+  </g>
+  
+  <text x="600" y="510" text-anchor="middle" fill="white" font-size="52" font-weight="bold">無相觀音燈會</text>
+  <text x="600" y="555" text-anchor="middle" fill="#ffeb3b" font-size="24">慈悲祥和 福佑眾生</text>
+</svg>

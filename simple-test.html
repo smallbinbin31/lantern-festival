@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>簡單測試</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 40px;
+            background: #f5f5f5;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #D94E28; }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>✅ 如果你看到這個，HTML 正常載入</h1>
+        <p>伺服器運作正常</p>
+    </div>
+    
+    <div class="box">
+        <h2>JavaScript 測試：</h2>
+        <p id="jsTest" class="error">❌ JavaScript 未執行</p>
+    </div>
+    
+    <div class="box">
+        <h2>ES6 模組測試：</h2>
+        <p id="moduleTest" class="error">❌ 模組未載入</p>
+    </div>
+    
+    <div class="box">
+        <h2>Firebase 測試：</h2>
+        <p id="firebaseTest" class="error">❌ Firebase 未測試</p>
+    </div>
+    
+    <div class="box">
+        <h2>控制台訊息：</h2>
+        <p>請按 F12 開啟開發者工具查看 Console 標籤</p>
+    </div>
+    
+    <script>
+        // 基本 JavaScript 測試
+        document.getElementById('jsTest').innerHTML = '✅ JavaScript 正常執行';
+        document.getElementById('jsTest').className = 'success';
+        console.log('✅ 基本 JavaScript 正常');
+    </script>
+    
+    <script type="module">
+        // ES6 模組測試
+        console.log('✅ ES6 模組支援正常');
+        document.getElementById('moduleTest').innerHTML = '✅ ES6 模組正常';
+        document.getElementById('moduleTest').className = 'success';
+        
+        // Firebase 測試
+        try {
+            const { isFirebaseConfigured, database, auth } = await import('./scripts/firebase-config.js');
+            console.log('✅ Firebase 模組載入成功');
+            console.log('   - isFirebaseConfigured:', isFirebaseConfigured);
+            console.log('   - database._isDemoMode:', database?._isDemoMode);
+            console.log('   - auth._isDemoMode:', auth?._isDemoMode);
+            
+            document.getElementById('firebaseTest').innerHTML = 
+                `✅ Firebase 模組載入成功<br>
+                - 設定狀態: ${isFirebaseConfigured ? '已設定' : 'Demo 模式'}<br>
+                - Database: ${database?._isDemoMode ? 'Demo' : '正常'}<br>
+                - Auth: ${auth?._isDemoMode ? 'Demo' : '正常'}`;
+            document.getElementById('firebaseTest').className = 'success';
+        } catch (error) {
+            console.error('❌ Firebase 載入錯誤:', error);
+            document.getElementById('firebaseTest').innerHTML = 
+                `❌ Firebase 載入失敗<br>${error.message}`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="塭堵龍興堂115年元宵節活動 - 傳統乞龜、招財錢龜報名、擲筊杯競賽、廟會模型展覽、龍興市集、無相觀音燈會。歡迎參加！">
+    <meta name="keywords" content="塭堵龍興堂,元宵節,乞龜,招財錢龜,擲筊杯,廟會模型,龍興市集,觀音燈會,民俗活動,傳統文化">
+    <meta name="author" content="塭堵龍興堂">
+    <meta name="theme-color" content="#D94E28">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lantern-festival.netlify.app/">
+    <meta property="og:title" content="塭堵龍興堂115年元宵節活動">
+    <meta property="og:description" content="歡迎參加塭堵龍興堂元宵節系列活動 - 傳統乞龜、招財錢龜報名、擲筊杯競賽、廟會模型展覽、龍興市集、無相觀音燈會">
+    <meta property="og:image" content="https://lantern-festival.netlify.app/images/logo.svg">
+    <meta property="og:locale" content="zh_TW">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="塭堵龍興堂115年元宵節活動">
+    <meta name="twitter:description" content="歡迎參加塭堵龍興堂元宵節系列活動">
+    <meta name="twitter:image" content="https://lantern-festival.netlify.app/images/logo.svg">
+    
+    <title>塭堵龍興堂115年元宵節活動</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/main.css?v=20260207">
+    
+    <!-- Firebase SDK 9.x (Modular) -->
+    <script type="module" src="scripts/firebase-config.js?v=20260207"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <img src="images/logo.svg" alt="龍興堂 Logo" class="logo" width="60" height="60" loading="eager">
+                <h1 class="site-title">塭堵龍興堂115年元宵節活動</h1>
+                <button id="adminLoginBtn" class="admin-btn">管理者登入</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="container">
+            <ul class="nav-tabs">
+                <li><a href="#home" class="nav-link active" data-page="home">首頁</a></li>
+                <li><a href="#qigui" class="nav-link" data-page="qigui">傳統乞龜</a></li>
+                <li><a href="#dice" class="nav-link" data-page="dice">擲筊杯競賽</a></li>
+                <li><a href="#model" class="nav-link" data-page="model">廟會模型展</a></li>
+                <li><a href="#market" class="nav-link" data-page="market">龍興市集</a></li>
+                <li><a href="#lantern" class="nav-link" data-page="lantern">觀音燈會</a></li>
+                <li><a href="#online-dice" class="nav-link" data-page="online-dice">線上擲筊杯</a></li>
+                <li><a href="#sponsor" class="nav-link" data-page="sponsor">贊助名單</a></li>
+                <li><a href="#about" class="nav-link" data-page="about">關於龍興堂</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="main-content">
+        <!-- Dynamic content will be loaded here -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 塭堵龍興堂。保留所有權利。</p>
+            <p>聯絡資訊：(07) 617-3845 | 高雄市梓官區光明路92巷16號</p>
+        </div>
+    </footer>
+
+    <!-- Admin Login Modal -->
+    <div id="adminModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <h2>管理者登入</h2>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminEmail">Email</label>
+                    <input type="email" id="adminEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">密碼</label>
+                    <input type="password" id="adminPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary">登入</button>
+                <div id="loginError" class="error-message" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="scripts/utils.js?v=20260207"></script>
+    <script type="module" src="scripts/app.js?v=20260207"></script>
+</body>
+</html>

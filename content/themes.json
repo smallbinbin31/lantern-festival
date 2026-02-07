@@ -1,0 +1,94 @@
+{
+  "themes": [
+    {
+      "id": "qigui",
+      "name": "傳統乞龜活動",
+      "description": "體驗百年傳統乞龜文化，參與招財錢龜報名",
+      "image": "images/theme-qigui.webp",
+      "order": 1,
+      "featured": true,
+      "subThemes": [
+        {
+          "id": "qigui-intro",
+          "name": "傳統錢龜介紹",
+          "description": "了解錢龜的文化背景與傳統意義"
+        },
+        {
+          "id": "qigui-register",
+          "name": "招財錢龜報名",
+          "description": "立即報名參加招財錢龜活動"
+        }
+      ],
+      "details": {
+        "history": "乞龜是台灣傳統元宵節習俗，起源於明清時期。龜在中國文化中象徵長壽、穩健和吉祥，「乞龜」即向神明祈求平安、財運亨通之意。",
+        "tradition": "信眾向廟方乞得龜形供品（米龜、麵龜或錢龜），隔年須以更大的龜還願，展現感恩之心。",
+        "significance": "錢龜以硬幣堆疊而成，象徵財源廣進、招財進寶，是龍興堂元宵節的重要傳統活動。"
+      }
+    },
+    {
+      "id": "dice",
+      "name": "元宵擲筊杯競賽",
+      "description": "參加傳統擲筊杯活動，祈求新年好運",
+      "image": "images/theme-dice.webp",
+      "order": 2,
+      "featured": true,
+      "details": {
+        "time": "元宵節當天 14:00-17:00",
+        "location": "龍興堂廟埕",
+        "prizes": "精美禮品、祈福紅包",
+        "rules": "連續擲出聖筊者獲勝，規則由主持人現場說明"
+      }
+    },
+    {
+      "id": "model",
+      "name": "廟會模型展覽",
+      "description": "欣賞精緻廟會模型，感受傳統工藝之美",
+      "image": "images/theme-model.webp",
+      "order": 3,
+      "featured": true,
+      "details": {
+        "scale": "超過 50 件精緻廟會模型",
+        "content": "神轎、八家將、舞龍舞獅、廟會遊行場景",
+        "duration": "元宵節前一週至元宵節後一週",
+        "admission": "免費參觀",
+        "highlights": "1:10 比例精緻模型，重現傳統廟會盛況"
+      }
+    },
+    {
+      "id": "market",
+      "name": "龍興市集",
+      "description": "品嚐在地美食，選購特色商品",
+      "image": "images/theme-market.webp",
+      "order": 4,
+      "featured": true,
+      "details": {
+        "food": "在地小吃、傳統糕餅、特色飲品、元宵湯圓",
+        "crafts": "手工藝品、祈福小物、紀念品、文創商品",
+        "duration": "元宵節前三天至元宵節當天",
+        "stalls": "超過 30 個特色攤位",
+        "hours": "每日 10:00-21:00"
+      }
+    },
+    {
+      "id": "lantern",
+      "name": "無相觀音燈會",
+      "description": "欣賞璀璨燈飾，感受元宵節慶氛圍",
+      "image": "images/theme-lantern.webp",
+      "order": 5,
+      "featured": true,
+      "details": {
+        "theme": "無相觀音與慈悲精神",
+        "scale": "超過 1000 盞花燈",
+        "lighting": "每晚 18:00-22:00 點燈",
+        "highlights": "大型主燈、祈福燈籠牆、互動光影裝置",
+        "special": "特別設置祈福區，可書寫祈福卡片懸掛於祈福樹"
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-10-30",
+    "description": "塭堵龍興堂115年元宵節活動主題資料",
+    "totalThemes": 5
+  }
+}

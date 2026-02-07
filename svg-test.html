@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVG 顯示測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #d32f2f; }
+        h2 { color: #555; border-bottom: 2px solid #d32f2f; padding-bottom: 10px; }
+        .svg-display {
+            border: 2px solid #ddd;
+            padding: 10px;
+            margin: 15px 0;
+            background: #fafafa;
+            text-align: center;
+        }
+        .svg-display img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        .info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #2196f3;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ SVG 圖片顯示測試</h1>
+    
+    <div class="info">
+        <strong>說明：</strong>如果下方的圖片框是空白的，表示 SVG 檔案可能有語法錯誤。<br>
+        如果能看到彩色圖片，表示 SVG 正常，可能是主頁面的 CSS 或 JavaScript 問題。
+    </div>
+    
+    <!-- 測試 1 -->
+    <div class="test-container">
+        <h2>1️⃣ 傳統乞龜活動</h2>
+        <div class="svg-display">
+            <img src="images/theme-qigui.svg" alt="傳統乞龜活動" style="max-height: 300px;">
+        </div>
+        <p>檔案：<code>images/theme-qigui.svg</code></p>
+    </div>
+    
+    <!-- 測試 2 -->
+    <div class="test-container">
+        <h2>2️⃣ 元宵擲筊杯競賽</h2>
+        <div class="svg-display">
+            <img src="images/theme-dice.svg" alt="元宵擲筊杯競賽" style="max-height: 300px;">
+        </div>
+        <p>檔案：<code>images/theme-dice.svg</code></p>
+    </div>
+    
+    <!-- 測試 3 -->
+    <div class="test-container">
+        <h2>3️⃣ 廟會模型展覽</h2>
+        <div class="svg-display">
+            <img src="images/theme-model.svg" alt="廟會模型展覽" style="max-height: 300px;">
+        </div>
+        <p>檔案：<code>images/theme-model.svg</code></p>
+    </div>
+    
+    <!-- 測試 4 -->
+    <div class="test-container">
+        <h2>4️⃣ 龍興市集</h2>
+        <div class="svg-display">
+            <img src="images/theme-market.svg" alt="龍興市集" style="max-height: 300px;">
+        </div>
+        <p>檔案：<code>images/theme-market.svg</code></p>
+    </div>
+    
+    <!-- 測試 5 -->
+    <div class="test-container">
+        <h2>5️⃣ 無相觀音燈會</h2>
+        <div class="svg-display">
+            <img src="images/theme-lantern.svg" alt="無相觀音燈會" style="max-height: 300px;">
+        </div>
+        <p>檔案：<code>images/theme-lantern.svg</code></p>
+    </div>
+    
+    <div class="info">
+        <strong>建議：</strong>
+        <ol>
+            <li>如果在這個測試頁面能看到所有圖片 → 問題在主頁面的 CSS（可能是 <code>object-fit: contain</code> 或高度設置）</li>
+            <li>如果這裡也看不到某些圖片 → 那些 SVG 檔案有語法錯誤需要修正</li>
+            <li>建議用外部瀏覽器（Chrome 或 Edge）開啟：<code>http://localhost:8000/svg-test.html</code></li>
+        </ol>
+    </div>
+    
+    <script>
+        // 檢測圖片載入狀態
+        const images = document.querySelectorAll('.svg-display img');
+        images.forEach((img, index) => {
+            img.addEventListener('load', () => {
+                console.log(`✅ 圖片 ${index + 1} 載入成功:`, img.src);
+            });
+            img.addEventListener('error', () => {
+                console.error(`❌ 圖片 ${index + 1} 載入失敗:`, img.src);
+                img.parentElement.innerHTML += '<p style="color: red; font-weight: bold;">⚠️ 此 SVG 無法顯示，可能有語法錯誤</p>';
+            });
+        });
+    </script>
+</body>
+</html>
