@@ -1,0 +1,105 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    
+    "registrations": {
+      ".read": "auth != null",
+      
+      "$registrationId": {
+        ".write": "(auth == null && !data.exists()) || (auth != null && data.exists())",
+        
+        ".validate": "newData.hasChildren(['name', 'phone', 'selectedTurtles', 'turtleCount', 'timestamp', 'createdAt'])",
+        
+        "name": {
+          ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 50"
+        },
+        
+        "phone": {
+          ".validate": "newData.isString() && newData.val().length >= 10 && newData.val().length <= 15"
+        },
+        
+        "selectedTurtles": {
+          ".validate": "newData.hasChildren()",
+          "$turtleIndex": {
+            ".validate": "newData.isString()"
+          }
+        },
+        
+        "turtleCount": {
+          ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 3"
+        },
+        
+        "timestamp": {
+          ".validate": "newData.isNumber() && newData.val() > 0"
+        },
+        
+        "createdAt": {
+          ".validate": "newData.isString()"
+        },
+        
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    
+    "sponsors": {
+      ".read": true,
+      ".write": "auth != null",
+      
+      "$sponsorId": {
+        ".validate": "newData.hasChildren(['name', 'amount', 'timestamp', 'createdAt'])",
+        
+        "name": {
+          ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 100"
+        },
+        
+        "amount": {
+          ".validate": "newData.isNumber() && newData.val() > 0 && newData.val() <= 10000000"
+        },
+        
+        "message": {
+          ".validate": "newData.isString() && newData.val().length <= 500"
+        },
+        
+        "timestamp": {
+          ".validate": "newData.isNumber() && newData.val() > 0"
+        },
+        
+        "createdAt": {
+          ".validate": "newData.isString()"
+        },
+        
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    
+    "admins": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      
+      "$uid": {
+        ".validate": "newData.hasChildren(['email', 'displayName', 'role'])",
+        
+        "email": {
+          ".validate": "newData.isString()"
+        },
+        
+        "displayName": {
+          ".validate": "newData.isString()"
+        },
+        
+        "role": {
+          ".validate": "newData.val() === 'admin'"
+        },
+        
+        "lastLogin": {
+          ".validate": "newData.isString()"
+        }
+      }
+    }
+  }
+}

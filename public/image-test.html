@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖片測試</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #d32f2f; }
+        h2 { color: #333; border-bottom: 2px solid #d32f2f; padding-bottom: 10px; }
+        .image-container {
+            margin: 15px 0;
+            padding: 10px;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+        }
+        .status { 
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ 圖片載入測試頁面</h1>
+    
+    <div class="test-section">
+        <h2>測試 1：Logo SVG</h2>
+        <div class="image-container">
+            <p><strong>檔案：</strong><code>images/logo.svg</code></p>
+            <img src="images/logo.svg" alt="Logo" width="200">
+            <p id="logo-status" class="status">檢查中...</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>測試 2：主題圖片（傳統乞龜）</h2>
+        <div class="image-container">
+            <p><strong>檔案：</strong><code>images/theme-qigui.svg</code></p>
+            <img src="images/theme-qigui.svg" alt="傳統乞龜活動" width="600">
+            <p id="qigui-status" class="status">檢查中...</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>測試 3：主題圖片（擲筊杯）</h2>
+        <div class="image-container">
+            <p><strong>檔案：</strong><code>images/theme-dice.svg</code></p>
+            <img src="images/theme-dice.svg" alt="擲筊杯競賽" width="600">
+            <p id="dice-status" class="status">檢查中...</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>測試 4：主題圖片（廟會模型）</h2>
+        <div class="image-container">
+            <p><strong>檔案：</strong><code>images/theme-model.svg</code></p>
+            <img src="images/theme-model.svg" alt="廟會模型展覽" width="600">
+            <p id="model-status" class="status">檢查中...</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>測試 5：主題圖片（龍興市集）</h2>
+        <div class="image-container">
+            <p><strong>檔案：</strong><code>images/theme-market.svg</code></p>
+            <img src="images/theme-market.svg" alt="龍興市集" width="600">
+            <p id="market-status" class="status">檢查中...</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>測試 6：主題圖片（觀音燈會）</h2>
+        <div class="image-container">
+            <p><strong>檔案：</strong><code>images/theme-lantern.svg</code></p>
+            <img src="images/theme-lantern.svg" alt="觀音燈會" width="600">
+            <p id="lantern-status" class="status">檢查中...</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>📊 測試結果總結</h2>
+        <div id="summary"></div>
+        <p><strong>說明：</strong></p>
+        <ul>
+            <li>✅ 綠色 = 圖片載入成功</li>
+            <li>❌ 紅色 = 圖片載入失敗</li>
+        </ul>
+        <p><strong>如果所有圖片都顯示載入成功但你看不到圖片：</strong></p>
+        <ol>
+            <li>嘗試使用外部瀏覽器（Chrome、Edge）開啟 <code>http://localhost:8000/image-test.html</code></li>
+            <li>可能是 VS Code 簡易瀏覽器的限制</li>
+        </ol>
+    </div>
+    
+    <script>
+        // 檢查圖片載入狀態
+        const images = [
+            { id: 'logo-status', img: 'images/logo.svg', name: 'Logo' },
+            { id: 'qigui-status', img: 'images/theme-qigui.svg', name: '傳統乞龜' },
+            { id: 'dice-status', img: 'images/theme-dice.svg', name: '擲筊杯' },
+            { id: 'model-status', img: 'images/theme-model.svg', name: '廟會模型' },
+            { id: 'market-status', img: 'images/theme-market.svg', name: '龍興市集' },
+            { id: 'lantern-status', img: 'images/theme-lantern.svg', name: '觀音燈會' }
+        ];
+        
+        let loadedCount = 0;
+        let failedCount = 0;
+        
+        images.forEach(item => {
+            const img = new Image();
+            const statusEl = document.getElementById(item.id);
+            
+            img.onload = () => {
+                statusEl.textContent = `✅ ${item.name} 圖片載入成功！`;
+                statusEl.className = 'status success';
+                loadedCount++;
+                updateSummary();
+            };
+            
+            img.onerror = () => {
+                statusEl.textContent = `❌ ${item.name} 圖片載入失敗！`;
+                statusEl.className = 'status error';
+                failedCount++;
+                updateSummary();
+            };
+            
+            img.src = item.img;
+        });
+        
+        function updateSummary() {
+            const summaryEl = document.getElementById('summary');
+            const total = images.length;
+            const pending = total - loadedCount - failedCount;
+            
+            summaryEl.innerHTML = `
+                <div class="status ${failedCount === 0 && pending === 0 ? 'success' : 'error'}">
+                    <p><strong>測試進度：</strong></p>
+                    <ul>
+                        <li>✅ 成功載入：${loadedCount} / ${total}</li>
+                        <li>❌ 載入失敗：${failedCount} / ${total}</li>
+                        <li>⏳ 等待中：${pending} / ${total}</li>
+                    </ul>
+                </div>
+            `;
+        }
+        
+        // 初始顯示
+        updateSummary();
+    </script>
+</body>
+</html>

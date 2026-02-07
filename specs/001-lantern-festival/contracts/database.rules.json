@@ -1,0 +1,61 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    
+    "registrations": {
+      ".read": "auth != null",
+      
+      "$registrationId": {
+        ".write": "auth == null && !data.exists()",
+        
+        ".validate": "newData.hasChildren(['name', 'phone', 'timestamp', 'createdAt'])",
+        
+        "name": {
+          ".validate": "newData.isString() && newData.val().length >= 2 && newData.val().length <= 50"
+        },
+        
+        "phone": {
+          ".validate": "newData.isString() && newData.val().matches(/^09[0-9]{8}$|^[0-9]{2,4}-?[0-9]{6,8}$/)"
+        },
+        
+        "timestamp": {
+          ".validate": "newData.isNumber() && newData.val() > 0"
+        },
+        
+        "createdAt": {
+          ".validate": "newData.isString()"
+        },
+        
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+    
+    "admins": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      
+      "$uid": {
+        ".validate": "newData.hasChildren(['email', 'displayName', 'role'])",
+        
+        "email": {
+          ".validate": "newData.isString()"
+        },
+        
+        "displayName": {
+          ".validate": "newData.isString()"
+        },
+        
+        "role": {
+          ".validate": "newData.val() === 'admin'"
+        },
+        
+        "lastLogin": {
+          ".validate": "newData.isString()"
+        }
+      }
+    }
+  }
+}

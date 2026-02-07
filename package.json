@@ -1,0 +1,25 @@
+{
+  "name": "lantern-festival-website",
+  "version": "1.0.0",
+  "description": "塭堵龍興堂115年元宵節活動網站",
+  "main": "public/index.html",
+  "scripts": {
+    "serve": "firebase serve",
+    "deploy:firebase": "firebase deploy --only database",
+    "deploy:netlify": "netlify deploy --prod --dir public",
+    "deploy": "npm run deploy:firebase && npm run deploy:netlify"
+  },
+  "keywords": [
+    "lantern-festival",
+    "temple",
+    "firebase",
+    "spa"
+  ],
+  "author": "塭堵龍興堂",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "firebase-tools": "^13.0.0",
+    "netlify-cli": "^17.0.0"
+  }
+}
